@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API Сервис заказа товаров для розничных сетей</title>
+</head>
+<body>
+    <h1>Список пользователей</h1>
+<ul>
+    {% for us in user %}
+        <li>{{ us.username }}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

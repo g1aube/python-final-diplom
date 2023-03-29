@@ -2,3 +2,4 @@ django
 django-rest-passwordreset
 psycopg2-binary
 djangorestframework
+pyyaml
