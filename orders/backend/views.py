@@ -55,3 +55,38 @@ def users_view(request):
     user = User.objects.all()
     context['user'] = user
     return render(request, base_template_users, context)
+
+class ProductAPIView(ModelViewSet):
+    "Список товаров"
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    ordering = ['id']
+    search_fields = ['name']
+
+class CategoryAPIView(ModelViewSet):
+    "Список категорий"
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    search_fields = ['name']
+
+class ShopAPIView(ModelViewSet):
+    "Список магазинов"
+    queryset = Shop.objects.all()
+    serializer_class = ShopSerializer
+    ordering = ['name']
+    search_fields = ['name']
+
+class PartnerOrdersAPIView(APIView):
+    "Отображение заказов для поставщика"
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return JsonResponse({'Status': False,
+                                 'Error': 'Only for registered users'},
+                                  status=403)
+        if request.user.type != 'shop':
+            return JsonResponse({'Status': False, 'Error': 'Only shops'}, status=403)
+
+        order = Order.objects.filter(ordered_items__product_info__shop__user_id=request.user.id).exclude(state='basket').prefetch_related('ordered_items__product_info__product__category')
+        serializer = OrderSerializer(order, many=True)
+        return Response(serializer.data)
+
