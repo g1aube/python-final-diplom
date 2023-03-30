@@ -13,5 +13,8 @@ urlpatterns = [
     path('register/', views.register_view, name='register'),
     path('login/', views.login_view, name='login'),
     path('users/', views.users_view, name='users'),
-    path('partner_order/', views.PartnerOrdersAPIView.as_view(), name='partner-load')
+    path('partner_order/', views.PartnerOrdersAPIView.as_view(), name='partner-load'),
+    path('user/basket', views.BasketAPIView.as_view(), name='user-basket'),
+    path('user/orders', views.OrderAPIView.as_view(), name='user-orders'),
+    path('partner_order/', views.PartnerOrdersAPIView.as_view(), name='partner-order'),
 ]
