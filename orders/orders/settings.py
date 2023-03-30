@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'orders.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'diplom',
-        'USER': 'yakummi',
-        'PASSWORD': 'gorobtsov1812',
-        # 'HOST': '127.0.0.1',
-        # 'PORT': '5432'
+        'NAME': '***',
+        'USER': '***',
+        'PASSWORD': '***',
+        'HOST': '127.0.0.1',
+        'PORT': '5432'
     }
 }
 
@@ -128,3 +128,5 @@ STATIC_URL = 'templates/'
 AUTH_USER_MODEL = 'backend.User'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = '/'
