@@ -6,6 +6,7 @@ router = DefaultRouter()
 router.register("products", views.ProductAPIView, basename='products')
 router.register("category", views.CategoryAPIView, basename='category')
 router.register("shops", views.ShopAPIView, basename='shops')
+router.register("product_info", views.ProductInfoAPIView, basename='product_info')
 
 urlpatterns = [
     path('', include(router.urls)),
